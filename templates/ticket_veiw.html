@@ -1,0 +1,32 @@
+<a href="/">Home</a>|<a href="logout/">Logout</a>
+<h1>{{ticket.title}}</h1>
+<h3>Status : {{ticket.status}}</h3>
+<p>{{ticket.description}}</p>
+<h6>Posted on :{{ticket.time}}</h6>
+<p>
+  Posted by
+  <a href="/user/{{ticket.ticket_filed_by.id}}">{{ticket.ticket_filed_by}}</a>
+</p>
+{% if ticket.status == 'In Progress'%}
+<p>
+  <a href="/user/{{ticket.ticket_assigned_to.id}}"
+    >{{ticket.ticket_assigned_to}}</a
+  >
+  is working on it
+</p>
+<a href="/complete/{{ticket.id}}">Complete</a>
+<a href="/return/{{ticket.id}}">Return</a>
+<a href="/invalidate/{{ticket.id}}">Invalidate ticket</a>
+{% elif ticket.status == 'Done' or ticket.status == 'Invalid' %}
+<p>
+  <a href="/user/{{ticket.ticket_completed_by.id}}"
+    >{{ticket.ticket_completed_by}}</a
+  >
+  completed ticket
+</p>
+<a href="/reopen/{{ticket.id}}">Reopen</a>
+{%else%}
+<a href="/claim/{{ticket.id}}">Claim</a>
+<a href="/invalidate/{{ticket.id}}">Invalidate ticket</a>
+{% endif %}
+<a href="{{ticket.id}}/edit">Edit</a>

@@ -1,0 +1,33 @@
+<a href="submit/">Submit Ticket</a>|<a href="/logout/">Logout</a>
+<h1>New Tickets</h1>
+<ul>
+  {% for ticket in new %}
+  <li>
+    <a href="/ticket/{{ticket.id}}"> {{ticket.title}}</a>
+  </li>
+  {%endfor%}
+</ul>
+<h1>In Progress</h1>
+<ul>
+  {% for ticket in ip %}
+  <li>
+    <a href="/ticket/{{ticket.id}}"> {{ticket.title}}</a>
+  </li>
+  {%endfor%}
+</ul>
+<h1>Done Tickets</h1>
+<ul>
+  {% for ticket in done %}
+  <li>
+    <a href="/ticket/{{ticket.id}}"> {{ticket.title}}</a>
+  </li>
+  {%endfor%}
+</ul>
+<h1>Invalid Tickets</h1>
+<ul>
+  {% for ticket in Inv %}
+  <li>
+    <a href="/ticket/{{ticket.id}}"> {{ticket.title}}</a>
+  </li>
+  {%endfor%}
+</ul>
