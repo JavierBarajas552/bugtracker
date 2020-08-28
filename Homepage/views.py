@@ -55,7 +55,7 @@ def edit_ticket_veiw(request, ticket_id):
     if request.method == 'POST':
         form = EditForm(request.POST, instance=ticket)
         form.save()
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        return HttpResponseRedirect(reverse('homepage'))
     form = EditForm(instance=ticket)
     return render(request, "generic_form.html", {'form': form})
 
